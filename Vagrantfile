@@ -21,6 +21,8 @@ Vagrant.configure(2) do |config|
     SHELL
 
     config.vm.provision "shell", privileged: true, inline: <<-SHELL
+        add-apt-repository ppa:cwchien/gradle
+        apt-get update
         apt-get -y install gradle
         echo cd /vagrant >> .bashrc
     SHELL
