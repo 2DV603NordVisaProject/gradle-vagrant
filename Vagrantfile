@@ -4,6 +4,8 @@
 Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty64"
 
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+
     config.vm.provider "virtualbox" do |vb|
         vb.memory = "2048"
     end
@@ -25,5 +27,10 @@ Vagrant.configure(2) do |config|
         apt-get update
         apt-get -y install gradle
         echo cd /vagrant >> .bashrc
+    SHELL
+
+    config.vm.provision "shell", privileged: true, inline: <<-SHELL
+        apt-get -y install apache2
+        rm /var/www/html/index.php
     SHELL
 end
