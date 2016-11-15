@@ -32,10 +32,10 @@ public class ExampleTest {
 
     @Test
     public void divideTest() {
-        assertEquals(1.0, target.divide(1, 1));
+        assertEquals(1.0, target.divide(1, 1), 0);
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void divideByZeroTest() {
         target.divide(1, 0);
     }
