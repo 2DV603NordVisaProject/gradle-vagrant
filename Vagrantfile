@@ -26,4 +26,10 @@ Vagrant.configure(2) do |config|
         apt-get -y install gradle
         echo cd /vagrant >> .bashrc
     SHELL
+
+    config.vm.provision "shell", privileged: true, inline: <<-SHELL
+        apt-get -y install apache2
+        rm /var/www/html/index.html
+        chown -R vagrant:vagrant /var/www/html
+    SHELL
 end

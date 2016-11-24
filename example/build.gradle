@@ -1,4 +1,8 @@
 apply plugin: 'java'
+<<<<<<< HEAD
+=======
+apply plugin: 'jacoco'
+>>>>>>> c4ab78d0bff0976f24aae2b4c3849488150aab65
 
 //sourceCompatability = 8
 
@@ -9,3 +13,14 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+<<<<<<< HEAD
+=======
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.destination "/var/www/html"
+    }
+}
+>>>>>>> c4ab78d0bff0976f24aae2b4c3849488150aab65
