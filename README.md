@@ -21,6 +21,3 @@ An Ubuntu 14.04 vagrant configuration for Java 8 development with Gradle.
 1. Create project folder `mkdir project_name` and move into this directory
 1. Create project `gradle init`
 1. From here you can run Gradle tasks
-
-## Access html results
-If you are using a Gradle plugin which generates html to show the results like the code coverage tool JaCoCo then you can put the generated files in `/var/www/html`. They can then be accessed from the host machine at `localhost:8080`. For an example see example branch.
