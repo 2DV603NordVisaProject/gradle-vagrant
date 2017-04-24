@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
         apt-get update
     SHELL
 
+    # Installing Java 8
     config.vm.provision "shell", privileged: true, inline: <<-SHELL
         add-apt-repository ppa:webupd8team/java
         apt-get update
@@ -20,10 +21,19 @@ Vagrant.configure(2) do |config|
         sudo ln -s /usr/lib/jvm/java-8-oracle /usr/lib/jvm/default-java
     SHELL
 
+    # Installing Gradle
     config.vm.provision "shell", privileged: true, inline: <<-SHELL
         add-apt-repository ppa:cwchien/gradle
         apt-get update
         apt-get -y install gradle
         echo cd /vagrant >> .bashrc
+    SHELL
+
+    # Installing MongoDB
+    config.vm.provision "shell", privileged: true, inline: <<-SHELL
+        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+        echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+        apt-get update
+        apt-get install -y mongodb-org
     SHELL
 end
